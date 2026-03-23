@@ -12,19 +12,34 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="식비 트래커">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#f5f4f0">
+<meta name="theme-color" content="#1a1a1a">
 <link rel="apple-touch-icon" id="apple-icon">
 <link rel="manifest" id="pwa-manifest">
 <script>
-// 인라인 아이콘 (SVG → PNG 변환)
-const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#1a1a1a"/><text x="256" y="320" font-size="280" text-anchor="middle" font-family="serif">🍱</text></svg>`;
-const blob=new Blob([svg],{type:'image/svg+xml'});
-const iconUrl=URL.createObjectURL(blob);
-document.getElementById('apple-icon').href=iconUrl;
-// 인라인 manifest
-const manifest={name:'회사 식비 트래커',short_name:'식비 트래커',start_url:location.href,display:'standalone',background_color:'#f5f4f0',theme_color:'#1a1a1a',icons:[{src:iconUrl,sizes:'512x512',type:'image/svg+xml'}]};
-const mBlob=new Blob([JSON.stringify(manifest)],{type:'application/json'});
-document.getElementById('pwa-manifest').href=URL.createObjectURL(mBlob);
+(function(){
+  const c=document.createElement('canvas');
+  c.width=512;c.height=512;
+  const ctx=c.getContext('2d');
+  // 배경
+  ctx.fillStyle='#1a1a1a';
+  const r=112;
+  ctx.beginPath();
+  ctx.moveTo(r,0);ctx.lineTo(512-r,0);ctx.quadraticCurveTo(512,0,512,r);
+  ctx.lineTo(512,512-r);ctx.quadraticCurveTo(512,512,512-r,512);
+  ctx.lineTo(r,512);ctx.quadraticCurveTo(0,512,0,512-r);
+  ctx.lineTo(0,r);ctx.quadraticCurveTo(0,0,r,0);
+  ctx.closePath();ctx.fill();
+  // 이모지
+  ctx.font='300px serif';
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText('🍱',256,276);
+  const iconUrl=c.toDataURL('image/png');
+  document.getElementById('apple-icon').href=iconUrl;
+  // manifest
+  const manifest={name:'회사 식비 트래커',short_name:'식비 트래커',start_url:location.pathname,display:'standalone',background_color:'#f5f4f0',theme_color:'#1a1a1a',icons:[{src:iconUrl,sizes:'512x512',type:'image/png'}]};
+  const mBlob=new Blob([JSON.stringify(manifest)],{type:'application/json'});
+  document.getElementById('pwa-manifest').href=URL.createObjectURL(mBlob);
+})();
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
