@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -129,10 +130,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .modal-btn.cancel{background:#f0efe9;color:#555}
 .modal-btn.confirm{background:#e05050;color:#fff}
 </style>
+
 </head>
 <body>
 
 <!-- 온보딩 -->
+
 <div class="onboard" id="onboard">
   <div class="onboard-emoji">🍱</div>
   <h1>회사 식비 트래커</h1>
@@ -142,9 +145,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <!-- 메인 앱 -->
+
 <div class="app" id="main-app">
 
   <!-- 홈 탭 -->
+
   <div class="tab-page active" id="page-home" style="padding:14px">
     <div class="header">
       <h1>🍱 회사 식비 트래커</h1>
@@ -175,64 +180,69 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 
   <!-- 리포트 탭 -->
+
   <div class="tab-page" id="page-report" style="padding:14px">
     <div class="header" style="padding-top:16px">
       <h1>📊 리포트</h1>
     </div>
 
-    <div class="report-month-nav">
-      <button class="month-nav-btn" onclick="reportPrevMonth()">‹</button>
-      <span class="month-nav-label" id="report-month-label"></span>
-      <button class="month-nav-btn" onclick="reportNextMonth()">›</button>
-    </div>
+```
+<div class="report-month-nav">
+  <button class="month-nav-btn" onclick="reportPrevMonth()">‹</button>
+  <span class="month-nav-label" id="report-month-label"></span>
+  <button class="month-nav-btn" onclick="reportNextMonth()">›</button>
+</div>
 
-    <div class="report-summary">
-      <div class="report-stat">
-        <div class="report-stat-label">총 지출</div>
-        <div class="report-stat-value" id="r-total">0원</div>
-        <div class="report-stat-sub" id="r-total-sub"></div>
-      </div>
-      <div class="report-stat">
-        <div class="report-stat-label">이용 횟수</div>
-        <div class="report-stat-value" id="r-count">0회</div>
-        <div class="report-stat-sub" id="r-count-sub"></div>
-      </div>
-      <div class="report-stat">
-        <div class="report-stat-label">일평균 지출</div>
-        <div class="report-stat-value" id="r-avg">0원</div>
-        <div class="report-stat-sub">이용일 기준</div>
-      </div>
-      <div class="report-stat">
-        <div class="report-stat-label">가장 많이 쓴 메뉴</div>
-        <div class="report-stat-value" style="font-size:13px" id="r-top">—</div>
-        <div class="report-stat-sub" id="r-top-sub"></div>
-      </div>
-    </div>
+<div class="report-summary">
+  <div class="report-stat">
+    <div class="report-stat-label">총 지출</div>
+    <div class="report-stat-value" id="r-total">0원</div>
+    <div class="report-stat-sub" id="r-total-sub"></div>
+  </div>
+  <div class="report-stat">
+    <div class="report-stat-label">이용 횟수</div>
+    <div class="report-stat-value" id="r-count">0회</div>
+    <div class="report-stat-sub" id="r-count-sub"></div>
+  </div>
+  <div class="report-stat">
+    <div class="report-stat-label">일평균 지출</div>
+    <div class="report-stat-value" id="r-avg">0원</div>
+    <div class="report-stat-sub">이용일 기준</div>
+  </div>
+  <div class="report-stat">
+    <div class="report-stat-label">가장 많이 쓴 메뉴</div>
+    <div class="report-stat-value" style="font-size:13px" id="r-top">—</div>
+    <div class="report-stat-sub" id="r-top-sub"></div>
+  </div>
+</div>
 
-    <!-- 메뉴별 이용 횟수 -->
-    <div class="chart-card">
-      <div class="chart-title">메뉴별 이용 횟수</div>
-      <div class="bar-chart" id="chart-menu"></div>
-    </div>
+<!-- 메뉴별 이용 횟수 -->
+<div class="chart-card">
+  <div class="chart-title">메뉴별 이용 횟수</div>
+  <div class="bar-chart" id="chart-menu"></div>
+</div>
 
-    <!-- 월별 비교 -->
-    <div class="chart-card">
-      <div class="chart-title">최근 6개월 지출 비교</div>
-      <div class="compare-grid" id="chart-monthly"></div>
-    </div>
+<!-- 월별 비교 -->
+<div class="chart-card">
+  <div class="chart-title">최근 6개월 지출 비교</div>
+  <div class="compare-grid" id="chart-monthly"></div>
+</div>
 
-    <!-- 일별 기록 -->
-    <div class="chart-card">
-      <div class="chart-title">일별 이용 내역</div>
-      <div class="legend">
-        <div class="legend-item"><div class="legend-dot" style="background:#1a1a1a"></div>식사</div>
-        <div class="legend-item"><div class="legend-dot" style="background:#4a90d9"></div>카페</div>
-      </div>
-      <div class="dot-chart" id="chart-daily"></div>
-    </div>
+<!-- 일별 기록 -->
+<div class="chart-card">
+  <div class="chart-title">일별 이용 내역</div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#1a1a1a"></div>식사</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4a90d9"></div>카페</div>
+  </div>
+  <div class="dot-chart" id="chart-daily"></div>
+</div>
+```
+
   </div>
 
   <!-- 탭바 -->
+
   <div class="tab-bar">
     <button class="tab-btn active" id="tab-home" onclick="switchTab('home')">
       <span class="tab-icon">🏠</span>홈
@@ -274,9 +284,30 @@ function ls_set(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
 function fmt(iso){const d=new Date(iso);return `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`}
-function thisMonth(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`}
+// 22일~다음달 21일 기준 정산월 반환 (예: 3/22~4/21 → "2026-04")
+function thisMonth(){
+  const d=new Date();
+  const day=d.getDate();
+  let y=d.getFullYear(),m=d.getMonth()+1;
+  if(day>=22){m+=1;if(m>12){m=1;y++}}
+  return `${y}-${String(m).padStart(2,'0')}`;
+}
+// 정산월 기준 시작일(전달 22일)~종료일(해당월 21일) 범위 필터
+function inPeriod(iso,ym){
+  const[y,m]=ym.split('-').map(Number);
+  const d=new Date(iso);
+  const start=new Date(y,m-2,22); // 전달 22일
+  const end=new Date(y,m-1,21,23,59,59,999); // 해당월 21일
+  return d>=start&&d<=end;
+}
+function periodLabel(ym){
+  const[y,m]=ym.split('-').map(Number);
+  const pm=m-1<1?12:m-1;
+  const py=m-1<1?y-1:y;
+  return `${py}년 ${pm}월 22일 ~ ${y}년 ${m}월 21일`;
+}
 function countByMenu(id){return logs.filter(l=>l.menuId===id).length}
-function ymLabel(ym){const[y,m]=ym.split('-');return `${y}년 ${parseInt(m)}월`}
+function ymLabel(ym){const[y,m]=ym.split('-');return `${y}년 ${parseInt(m)}월 정산`}
 function ymShort(ym){const[,m]=ym.split('-');return `${parseInt(m)}월`}
 function addMonths(ym,n){
   let[y,m]=ym.split('-').map(Number);
@@ -307,7 +338,7 @@ function showMain(){
   document.getElementById('main-app').style.display='block';
   document.getElementById('user-tag').textContent='👤 '+userName;
   const d=new Date();
-  document.getElementById('today-date').textContent=`${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일`;
+  document.getElementById('today-date').textContent=periodLabel(thisMonth());
   reportYM=thisMonth();
   render();
 }
@@ -343,7 +374,7 @@ function render(){
     grid.appendChild(btn);
   });
   const ym=thisMonth();
-  const ml=logs.filter(l=>l.date.startsWith(ym));
+  const ml=logs.filter(l=>inPeriod(l.date,ym));
   document.getElementById('stat-count').textContent=ml.length;
   document.getElementById('stat-total').textContent=ml.reduce((s,l)=>s+l.price,0).toLocaleString()+'원';
   document.getElementById('stat-all').textContent=logs.reduce((s,l)=>s+l.price,0).toLocaleString()+'원';
@@ -362,14 +393,14 @@ function reportNextMonth(){
 }
 
 function renderReport(){
-  document.getElementById('report-month-label').textContent=ymLabel(reportYM);
-  const ml=logs.filter(l=>l.date.startsWith(reportYM));
+  document.getElementById('report-month-label').textContent=periodLabel(reportYM);
+  const ml=logs.filter(l=>inPeriod(l.date,reportYM));
   const total=ml.reduce((s,l)=>s+l.price,0);
   const cnt=ml.length;
 
   // 이전 달 비교
   const prevYM=addMonths(reportYM,-1);
-  const prevTotal=logs.filter(l=>l.date.startsWith(prevYM)).reduce((s,l)=>s+l.price,0);
+  const prevTotal=logs.filter(l=>inPeriod(l.date,prevYM)).reduce((s,l)=>s+l.price,0);
   const diff=total-prevTotal;
   const diffStr=diff===0?'전월 동일':(diff>0?`전월 대비 +${diff.toLocaleString()}원`:`전월 대비 ${diff.toLocaleString()}원`);
 
@@ -377,7 +408,7 @@ function renderReport(){
   document.getElementById('r-total-sub').textContent=diffStr;
   document.getElementById('r-count').textContent=cnt+'회';
 
-  const prevCnt=logs.filter(l=>l.date.startsWith(prevYM)).length;
+  const prevCnt=logs.filter(l=>inPeriod(l.date,prevYM)).length;
   const cntDiff=cnt-prevCnt;
   document.getElementById('r-count-sub').textContent=cntDiff===0?'전월 동일':(cntDiff>0?`전월 대비 +${cntDiff}회`:`전월 대비 ${cntDiff}회`);
 
@@ -422,7 +453,7 @@ function renderMenuChart(ml){
 function renderMonthlyChart(){
   const months=[];
   for(let i=5;i>=0;i--) months.push(addMonths(reportYM,-i));
-  const totals=months.map(ym=>({ym,total:logs.filter(l=>l.date.startsWith(ym)).reduce((s,l)=>s+l.price,0)}));
+  const totals=months.map(ym=>({ym,total:logs.filter(l=>inPeriod(l.date,ym)).reduce((s,l)=>s+l.price,0)}));
   const max=Math.max(...totals.map(t=>t.total),1);
   const el=document.getElementById('chart-monthly');
   el.innerHTML=totals.map(({ym,total})=>{
@@ -498,9 +529,9 @@ function deleteMenu(id){
 }
 function askReset(){
   const ym=thisMonth();
-  const label=ym.replace('-','년 ')+'월';
-  showModal('이번 달 초기화',`${label} 기록을 모두 삭제할까요?`,()=>{
-    logs=logs.filter(l=>!l.date.startsWith(ym));ls_set(K_LOGS,logs);
+  const label=periodLabel(ym);
+  showModal('이번 달 초기화',`${label}\n기록을 모두 삭제할까요?`,()=>{
+    logs=logs.filter(l=>!inPeriod(l.date,ym));ls_set(K_LOGS,logs);
     showToast('이번 달 기록이 초기화됐어요');render();
   });
 }
@@ -514,5 +545,6 @@ document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key===
 document.getElementById('page-home').style.display='block';
 document.getElementById('page-report').style.display='none';
 </script>
+
 </body>
 </html>
