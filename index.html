@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -7,7 +6,6 @@
 <title>회사 식비 트래커</title>
 
 <!-- PWA -->
-
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="식비 트래커">
@@ -20,7 +18,6 @@
   const c=document.createElement('canvas');
   c.width=512;c.height=512;
   const ctx=c.getContext('2d');
-  // 배경
   ctx.fillStyle='#1a1a1a';
   const r=112;
   ctx.beginPath();
@@ -29,13 +26,11 @@
   ctx.lineTo(r,512);ctx.quadraticCurveTo(0,512,0,512-r);
   ctx.lineTo(0,r);ctx.quadraticCurveTo(0,0,r,0);
   ctx.closePath();ctx.fill();
-  // 이모지
   ctx.font='300px serif';
   ctx.textAlign='center';ctx.textBaseline='middle';
   ctx.fillText('🍱',256,276);
   const iconUrl=c.toDataURL('image/png');
   document.getElementById('apple-icon').href=iconUrl;
-  // manifest
   const manifest={name:'회사 식비 트래커',short_name:'식비 트래커',start_url:location.pathname,display:'standalone',background_color:'#f5f4f0',theme_color:'#1a1a1a',icons:[{src:iconUrl,sizes:'512x512',type:'image/png'}]};
   const mBlob=new Blob([JSON.stringify(manifest)],{type:'application/json'});
   document.getElementById('pwa-manifest').href=URL.createObjectURL(mBlob);
@@ -62,7 +57,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .tab-btn.active{color:#1a1a1a}
 .tab-icon{font-size:22px;line-height:1}
 .tab-page{display:none;padding:14px}
-.tab-page.active{display:block}
 
 /* 헤더 */
 .header{text-align:center;padding:16px 0 10px;position:relative}
@@ -166,12 +160,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .modal-btn.cancel{background:#f0efe9;color:#555}
 .modal-btn.confirm{background:#e05050;color:#fff}
 </style>
-
 </head>
 <body>
 
 <!-- 온보딩 -->
-
 <div class="onboard" id="onboard">
   <div class="onboard-emoji">🍱</div>
   <h1>회사 식비 트래커</h1>
@@ -181,12 +173,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <!-- 메인 앱 -->
-
 <div class="app" id="main-app">
 
   <!-- 홈 탭 -->
-
-  <div class="tab-page active" id="page-home" style="padding:14px">
+  <div class="tab-page" id="page-home" style="padding:14px">
     <div class="header">
       <h1>🍱 회사 식비 트래커</h1>
       <p id="today-date"></p>
@@ -216,67 +206,65 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 
   <!-- 리포트 탭 -->
-
   <div class="tab-page" id="page-report" style="padding:14px">
     <div class="header" style="padding-top:16px">
       <h1>📊 리포트</h1>
     </div>
 
-<div class="report-month-nav">
-  <button class="month-nav-btn" onclick="reportPrevMonth()">‹</button>
-  <span class="month-nav-label" id="report-month-label"></span>
-  <button class="month-nav-btn" onclick="reportNextMonth()">›</button>
-</div>
+    <div class="report-month-nav">
+      <button class="month-nav-btn" onclick="reportPrevMonth()">‹</button>
+      <span class="month-nav-label" id="report-month-label"></span>
+      <button class="month-nav-btn" onclick="reportNextMonth()">›</button>
+    </div>
 
-<div class="report-summary">
-  <div class="report-stat">
-    <div class="report-stat-label">총 지출</div>
-    <div class="report-stat-value" id="r-total">0원</div>
-    <div class="report-stat-sub" id="r-total-sub"></div>
-  </div>
-  <div class="report-stat">
-    <div class="report-stat-label">이용 횟수</div>
-    <div class="report-stat-value" id="r-count">0회</div>
-    <div class="report-stat-sub" id="r-count-sub"></div>
-  </div>
-  <div class="report-stat">
-    <div class="report-stat-label">일평균 지출</div>
-    <div class="report-stat-value" id="r-avg">0원</div>
-    <div class="report-stat-sub">이용일 기준</div>
-  </div>
-  <div class="report-stat">
-    <div class="report-stat-label">가장 많이 쓴 메뉴</div>
-    <div class="report-stat-value" style="font-size:13px" id="r-top">—</div>
-    <div class="report-stat-sub" id="r-top-sub"></div>
-  </div>
-</div>
+    <div class="report-summary">
+      <div class="report-stat">
+        <div class="report-stat-label">총 지출</div>
+        <div class="report-stat-value" id="r-total">0원</div>
+        <div class="report-stat-sub" id="r-total-sub"></div>
+      </div>
+      <div class="report-stat">
+        <div class="report-stat-label">이용 횟수</div>
+        <div class="report-stat-value" id="r-count">0회</div>
+        <div class="report-stat-sub" id="r-count-sub"></div>
+      </div>
+      <div class="report-stat">
+        <div class="report-stat-label">일평균 지출</div>
+        <div class="report-stat-value" id="r-avg">0원</div>
+        <div class="report-stat-sub">이용일 기준</div>
+      </div>
+      <div class="report-stat">
+        <div class="report-stat-label">가장 많이 쓴 메뉴</div>
+        <div class="report-stat-value" style="font-size:13px" id="r-top">—</div>
+        <div class="report-stat-sub" id="r-top-sub"></div>
+      </div>
+    </div>
 
-<!-- 메뉴별 이용 횟수 -->
-<div class="chart-card">
-  <div class="chart-title">메뉴별 이용 횟수</div>
-  <div class="bar-chart" id="chart-menu"></div>
-</div>
+    <!-- 메뉴별 이용 횟수 -->
+    <div class="chart-card">
+      <div class="chart-title">메뉴별 이용 횟수</div>
+      <div class="bar-chart" id="chart-menu"></div>
+    </div>
 
-<!-- 월별 비교 -->
-<div class="chart-card">
-  <div class="chart-title">최근 6개월 지출 비교</div>
-  <div class="compare-grid" id="chart-monthly"></div>
-</div>
+    <!-- 월별 비교 -->
+    <div class="chart-card">
+      <div class="chart-title">최근 6개월 지출 비교</div>
+      <div class="compare-grid" id="chart-monthly"></div>
+    </div>
 
-<!-- 일별 기록 -->
-<div class="chart-card">
-  <div class="chart-title">일별 이용 내역</div>
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#1a1a1a"></div>식사</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#4a90d9"></div>카페</div>
-  </div>
-  <div class="dot-chart" id="chart-daily"></div>
-</div>
+    <!-- 일별 기록 -->
+    <div class="chart-card">
+      <div class="chart-title">일별 이용 내역</div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#1a1a1a"></div>식사</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#4a90d9"></div>카페</div>
+      </div>
+      <div class="dot-chart" id="chart-daily"></div>
+    </div>
 
   </div>
 
   <!-- 탭바 -->
-
   <div class="tab-bar">
     <button class="tab-btn active" id="tab-home" onclick="switchTab('home')">
       <span class="tab-icon">🏠</span>홈
@@ -306,19 +294,18 @@ const DEFAULT_MENUS=[
   {id:'m3',name:'아이스 아메리카노 샷추가',price:1800},
 ];
 const PROTECTED=['m1','m2','m3'];
-// 카페 메뉴 ID (도트 색상 구분용)
 const CAFE_IDS=['m2','m3'];
 
 let userName='',K_MENUS='',K_LOGS='';
 let menus=[],logs=[];
-let reportYM=''; // 현재 리포트 보고 있는 월
+let reportYM='';
 
 function ls_get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}}
 function ls_set(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
 function fmt(iso){const d=new Date(iso);return `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`}
-// 22일~다음달 21일 기준 정산월 반환 (예: 3/22~4/21 → "2026-04")
+
 function thisMonth(){
   const d=new Date();
   const day=d.getDate();
@@ -326,22 +313,23 @@ function thisMonth(){
   if(day>=22){m+=1;if(m>12){m=1;y++}}
   return `${y}-${String(m).padStart(2,'0')}`;
 }
-// 정산월 기준 시작일(전달 22일)~종료일(해당월 21일) 범위 필터
+
 function inPeriod(iso,ym){
   const[y,m]=ym.split('-').map(Number);
   const d=new Date(iso);
-  const start=new Date(y,m-2,22); // 전달 22일
-  const end=new Date(y,m-1,21,23,59,59,999); // 해당월 21일
+  const start=new Date(y,m-2,22);
+  const end=new Date(y,m-1,21,23,59,59,999);
   return d>=start&&d<=end;
 }
+
 function periodLabel(ym){
   const[y,m]=ym.split('-').map(Number);
   const pm=m-1<1?12:m-1;
   const py=m-1<1?y-1:y;
   return `${py}년 ${pm}월 22일 ~ ${y}년 ${m}월 21일`;
 }
+
 function countByMenu(id){return logs.filter(l=>l.menuId===id).length}
-function ymLabel(ym){const[y,m]=ym.split('-');return `${y}년 ${parseInt(m)}월 정산`}
 function ymShort(ym){const[,m]=ym.split('-');return `${parseInt(m)}월`}
 function addMonths(ym,n){
   let[y,m]=ym.split('-').map(Number);
@@ -371,10 +359,9 @@ function showMain(){
   document.getElementById('onboard').style.display='none';
   document.getElementById('main-app').style.display='block';
   document.getElementById('user-tag').textContent='👤 '+userName;
-  const d=new Date();
   document.getElementById('today-date').textContent=periodLabel(thisMonth());
   reportYM=thisMonth();
-  render();
+  switchTab('home');
 }
 
 function changeUser(){
@@ -388,9 +375,11 @@ function changeUser(){
 
 function switchTab(tab){
   ['home','report'].forEach(t=>{
-    document.getElementById('page-'+t).style.display=t===tab?'block':'none';
+    const page=document.getElementById('page-'+t);
+    page.style.display=t===tab?'block':'none';
     document.getElementById('tab-'+t).classList.toggle('active',t===tab);
   });
+  if(tab==='home') render();
   if(tab==='report') renderReport();
 }
 
@@ -432,7 +421,6 @@ function renderReport(){
   const total=ml.reduce((s,l)=>s+l.price,0);
   const cnt=ml.length;
 
-  // 이전 달 비교
   const prevYM=addMonths(reportYM,-1);
   const prevTotal=logs.filter(l=>inPeriod(l.date,prevYM)).reduce((s,l)=>s+l.price,0);
   const diff=total-prevTotal;
@@ -446,11 +434,9 @@ function renderReport(){
   const cntDiff=cnt-prevCnt;
   document.getElementById('r-count-sub').textContent=cntDiff===0?'전월 동일':(cntDiff>0?`전월 대비 +${cntDiff}회`:`전월 대비 ${cntDiff}회`);
 
-  // 일평균
   const days=[...new Set(ml.map(l=>l.date.slice(0,10)))].length;
   document.getElementById('r-avg').textContent=days?Math.round(total/days).toLocaleString()+'원':'—';
 
-  // 가장 많이 쓴 메뉴
   const menuCnt={};
   ml.forEach(l=>{menuCnt[l.menuName]=(menuCnt[l.menuName]||0)+1});
   const topMenu=Object.entries(menuCnt).sort((a,b)=>b[1]-a[1])[0];
@@ -464,7 +450,10 @@ function renderReport(){
 
 function renderMenuChart(ml){
   const cnt={};
-  ml.forEach(l=>{cnt[l.menuId]=(cnt[l.menuId]||{name:l.menuName,count:0});cnt[l.menuId].count++});
+  ml.forEach(l=>{
+    if(!cnt[l.menuId]) cnt[l.menuId]={name:l.menuName,count:0};
+    cnt[l.menuId].count++;
+  });
   const items=Object.values(cnt).sort((a,b)=>b.count-a.count);
   const max=items[0]?.count||1;
   const el=document.getElementById('chart-menu');
@@ -520,7 +509,9 @@ function renderDailyChart(ml){
     const items=byDay[day];
     const total=items.reduce((s,l)=>s+l.price,0);
     const dots=items.map(l=>{
-      const isCafe=l.menuId===undefined?false:CAFE_IDS.includes(l.menuId)||menus.find(m=>m.id===l.menuId&&(m.name.includes('아메리카노')||m.name.includes('카페')||m.name.includes('라떼')||m.name.includes('커피')));
+      const menuObj=menus.find(m=>m.id===l.menuId);
+      const isCafe=CAFE_IDS.includes(l.menuId)||
+        (menuObj&&(menuObj.name.includes('아메리카노')||menuObj.name.includes('카페')||menuObj.name.includes('라떼')||menuObj.name.includes('커피')));
       return `<div class="dot${isCafe?' cafe':''}" title="${escHtml(l.menuName)}"></div>`;
     }).join('');
     return `<div class="dot-row">
@@ -575,9 +566,6 @@ const savedUser=ls_get('lct_current_user','');
 if(savedUser){initUser(savedUser);showMain()}
 else{document.getElementById('onboard').style.display='flex'}
 document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')startApp()});
-// 탭 초기 상태
-document.getElementById('page-home').style.display='block';
-document.getElementById('page-report').style.display='none';
 </script>
 
 </body>
