@@ -207,8 +207,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="budget-card" id="budget-card">
       <div class="budget-info">
         <div class="budget-label">이번 달 잔여 식비</div>
-        <div class="budget-remain" id="budget-remain">200,000원</div>
-        <div class="budget-sub" id="budget-sub">200,000원 중 0원 사용</div>
+        <div class="budget-remain" id="budget-remain">220,000원</div>
+        <div class="budget-sub" id="budget-sub">220,000원 중 0원 사용</div>
       </div>
       <div class="budget-bar-wrap">
         <div class="budget-bar-fill" id="budget-bar-fill" style="width:0%"></div>
@@ -331,27 +331,27 @@ function ls_set(k,v){localStorage.setItem(k,JSON.stringify(v))}
 function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
 function fmt(iso){const d=new Date(iso);return `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`}
-// 22일~다음달 21일 기준 정산월 반환 (예: 3/22~4/21 → "2026-04")
+// 21일~다음달 20일 기준 정산월 반환 (예: 3/21~4/20 → "2026-04")
 function thisMonth(){
   const d=new Date();
   const day=d.getDate();
   let y=d.getFullYear(),m=d.getMonth()+1;
-  if(day>=22){m+=1;if(m>12){m=1;y++}}
+  if(day>=21){m+=1;if(m>12){m=1;y++}}
   return `${y}-${String(m).padStart(2,'0')}`;
 }
-// 정산월 기준 시작일(전달 22일)~종료일(해당월 21일) 범위 필터
+// 정산월 기준 시작일(전달 21일)~종료일(해당월 20일) 범위 필터
 function inPeriod(iso,ym){
   const[y,m]=ym.split('-').map(Number);
   const d=new Date(iso);
-  const start=new Date(y,m-2,22); // 전달 22일
-  const end=new Date(y,m-1,21,23,59,59,999); // 해당월 21일
+  const start=new Date(y,m-2,21); // 전달 21일
+  const end=new Date(y,m-1,20,23,59,59,999); // 해당월 20일
   return d>=start&&d<=end;
 }
 function periodLabel(ym){
   const[y,m]=ym.split('-').map(Number);
   const pm=m-1<1?12:m-1;
   const py=m-1<1?y-1:y;
-  return `${py}년 ${pm}월 22일 ~ ${y}년 ${m}월 21일`;
+  return `${py}년 ${pm}월 21일 ~ ${y}년 ${m}월 20일`;
 }
 function countByMenu(id){return logs.filter(l=>l.menuId===id).length}
 function ymLabel(ym){const[y,m]=ym.split('-');return `${y}년 ${parseInt(m)}월 정산`}
@@ -420,7 +420,7 @@ function render(){
     btn.onclick=()=>addLog(m);
     grid.appendChild(btn);
   });
-  const BUDGET=200000;
+  const BUDGET=220000;
   const ym=thisMonth();
   const ml=logs.filter(l=>inPeriod(l.date,ym));
   const spent=ml.reduce((s,l)=>s+l.price,0);
