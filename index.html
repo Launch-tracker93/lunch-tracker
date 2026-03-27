@@ -546,7 +546,7 @@ function renderDailyChart(ml){
     const items=byDay[day];
     const total=items.reduce((s,l)=>s+l.price,0);
     const dots=items.map(l=>{
-      const isCafe=l.menuId===undefined?false:CAFE_IDS.includes(l.menuId)||menus.find(m=>m.id===l.menuId&&(m.name.includes('아메리카노')||m.name.includes('카페')||m.name.includes('라떼')||m.name.includes('커피')));
+      const isCafe=l.menuName!=='점심식사';
       return `<div class="dot${isCafe?' cafe':''}" title="${escHtml(l.menuName)}"></div>`;
     }).join('');
     return `<div class="dot-row">
